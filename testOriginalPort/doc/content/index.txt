@@ -1,4 +1,4 @@
-﻿ModuleNameName - English
+﻿testOriginalPortName - English
 ========================
 
 .. toctree::
@@ -19,7 +19,7 @@ For a full list of classes and functions, see the `API documentation`_.
 Requirements
 ============
 
-ModuleName uses the `CMake build system`. You will need at least version
+testOriginalPort uses the `CMake build system`. You will need at least version
 2.8 to be able to build the component.
 
 .. _`CMAke build system`:
@@ -43,24 +43,24 @@ recommended method of installation in Windows.
   to take effect before using the component.
 
 The component can be launched by double-clicking the
-``ModuleNameComp`` executable. The ``ModuleName`` library
+``testOriginalPortComp`` executable. The ``testOriginalPort`` library
 is available for loading into a manager, using the initialisation function
-``ModuleNameInit``.
+``testOriginalPortInit``.
 
 From source
 -----------
 
-Follow these steps to install ModuleName from source in any operating
+Follow these steps to install testOriginalPort from source in any operating
 system:
 
 - Download the source, either from the repository or a source archive,
   and extract it somewhere::
 
-    tar -xvzf ModuleName-1.0.0.tar.gz
+    tar -xvzf testOriginalPort-1.0.0.tar.gz
 
 - Change to the directory containing the extracted source::
 
-    cd ModuleName-1.0.0
+    cd testOriginalPort-1.0.0
 
 - Create a directory called ``build``::
 
@@ -91,10 +91,10 @@ system:
 The component is now ready for use. See the next section for instructions on
 configuring the component.
 
-ModuleName can be launched in stand-alone mode by executing the
-``ModuleNameComp`` executable (installed into ``${prefix}/components/bin``).
-Alternatively, ``libModuleName.so`` can be loaded into a manager, using the
-initialisation function ``ModuleNameInit``. This shared object can be found in
+testOriginalPort can be launched in stand-alone mode by executing the
+``testOriginalPortComp`` executable (installed into ``${prefix}/components/bin``).
+Alternatively, ``libtestOriginalPort.so`` can be loaded into a manager, using the
+initialisation function ``testOriginalPortInit``. This shared object can be found in
 ``${prefix}/components/lib`` or ``${prefix}/components/lib64``.
 
 
@@ -124,7 +124,7 @@ Examples
 ========
 
 An example configuration file is provided in the
-``${prefix}/components/share/ModuleName/examples/conf/`` directory.
+``${prefix}/components/share/testOriginalPort/examples/conf/`` directory.
 
 Changelog
 =========

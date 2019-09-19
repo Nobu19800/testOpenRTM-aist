@@ -1,0 +1,54 @@
+# testConfigurationpy CMake config file
+#
+# This file sets the following variables:
+# testConfigurationpy_FOUND - Always TRUE.
+# testConfigurationpy_INCLUDE_DIRS - Directories containing the testConfigurationpy include files.
+# testConfigurationpy_IDL_DIRS - Directories containing the testConfigurationpy IDL files.
+# testConfigurationpy_LIBRARIES - Libraries needed to use testConfigurationpy.
+# testConfigurationpy_DEFINITIONS - Compiler flags for testConfigurationpy.
+# testConfigurationpy_VERSION - The version of testConfigurationpy found.
+# testConfigurationpy_VERSION_MAJOR - The major version of testConfigurationpy found.
+# testConfigurationpy_VERSION_MINOR - The minor version of testConfigurationpy found.
+# testConfigurationpy_VERSION_REVISION - The revision version of testConfigurationpy found.
+# testConfigurationpy_VERSION_CANDIDATE - The candidate version of testConfigurationpy found.
+
+message(STATUS "Found testConfigurationpy-@PROJECT_VERSION@")
+set(testConfigurationpy_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(testConfigurationpy_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(testConfigurationpy_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(testConfigurationpy_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(testConfigurationpy_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(testConfigurationpy_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(testConfigurationpy_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(testConfigurationpy_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(testConfigurationpy_VERSION @PROJECT_VERSION@)
+set(testConfigurationpy_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(testConfigurationpy_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(testConfigurationpy_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(testConfigurationpy_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

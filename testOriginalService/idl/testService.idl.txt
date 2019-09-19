@@ -1,0 +1,8 @@
+#include "test.idl"
+
+module Sample {
+  interface SampleInterface
+  {
+        void echo(in SampleDataType msg);
+  };
+};

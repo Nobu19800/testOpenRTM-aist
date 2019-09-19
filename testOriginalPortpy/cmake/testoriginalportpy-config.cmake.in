@@ -1,0 +1,54 @@
+# testOriginalPortpy CMake config file
+#
+# This file sets the following variables:
+# testOriginalPortpy_FOUND - Always TRUE.
+# testOriginalPortpy_INCLUDE_DIRS - Directories containing the testOriginalPortpy include files.
+# testOriginalPortpy_IDL_DIRS - Directories containing the testOriginalPortpy IDL files.
+# testOriginalPortpy_LIBRARIES - Libraries needed to use testOriginalPortpy.
+# testOriginalPortpy_DEFINITIONS - Compiler flags for testOriginalPortpy.
+# testOriginalPortpy_VERSION - The version of testOriginalPortpy found.
+# testOriginalPortpy_VERSION_MAJOR - The major version of testOriginalPortpy found.
+# testOriginalPortpy_VERSION_MINOR - The minor version of testOriginalPortpy found.
+# testOriginalPortpy_VERSION_REVISION - The revision version of testOriginalPortpy found.
+# testOriginalPortpy_VERSION_CANDIDATE - The candidate version of testOriginalPortpy found.
+
+message(STATUS "Found testOriginalPortpy-@PROJECT_VERSION@")
+set(testOriginalPortpy_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(testOriginalPortpy_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(testOriginalPortpy_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(testOriginalPortpy_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(testOriginalPortpy_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(testOriginalPortpy_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(testOriginalPortpy_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(testOriginalPortpy_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(testOriginalPortpy_VERSION @PROJECT_VERSION@)
+set(testOriginalPortpy_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(testOriginalPortpy_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(testOriginalPortpy_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(testOriginalPortpy_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

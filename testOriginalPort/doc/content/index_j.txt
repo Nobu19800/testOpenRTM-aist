@@ -1,4 +1,4 @@
-﻿ModuleName - 日本語
+﻿testOriginalPort - 日本語
 =======================
 
 
@@ -13,9 +13,9 @@
 条件
 ====
 
-ModuleNameはOpenRTM-aist 1.0.0以上のC++版が必要です。
+testOriginalPortはOpenRTM-aist 1.0.0以上のC++版が必要です。
 
-ModuleNameは CMake_ を使います。CMake 2.8以上が必要です。
+testOriginalPortは CMake_ を使います。CMake 2.8以上が必要です。
 
 .. _CMAke:
    http://www.cmake.org
@@ -36,8 +36,8 @@ Windowsのユーザはインストーラパッケージを使用してコンポ�
 - 環境変数の変更を適用するため、コンポーネントを使用する前にコンピューターを
   再起動する必要があるかもしれません。
 
-ModuleNameは ``ModuleNameComp`` の実行をダブルクリックして実行することが
-できます。あるいは、 ``ModuleName`` を初期化関数の ``ModuleNameInit`` を利用して、
+testOriginalPortは ``testOriginalPortComp`` の実行をダブルクリックして実行することが
+できます。あるいは、 ``testOriginalPort`` を初期化関数の ``testOriginalPortInit`` を利用して、
 マネージャにロードすることができます。
 
 ソースから
@@ -47,11 +47,11 @@ ModuleNameは ``ModuleNameComp`` の実行をダブルクリックして実行�
 
 - ソースをダウンロードして解凍してください::
 
-    tar -xvzf ModuleName-1.0.0.tar.gz
+    tar -xvzf testOriginalPort-1.0.0.tar.gz
 
 - 解凍されたフォルダに入ってください::
 
-    cd ModuleName-1.0.0
+    cd testOriginalPort-1.0.0
 
 - ``build`` フォルダを作ってください::
 
@@ -82,9 +82,9 @@ ModuleNameは ``ModuleNameComp`` の実行をダブルクリックして実行�
 ここまでで、コンポーネントが使えるようになりました。コンフィグレーションは次のセクションを
 参照してください。
 
-ModuleNameは ``ModuleNameComp`` を実行（ ``${prefix}/components/bin`` に
+testOriginalPortは ``testOriginalPortComp`` を実行（ ``${prefix}/components/bin`` に
 インストールされます）することでスタンドアローンモードで実行することができます。
-あるいは、 ``libModuleName.so`` を初期化関数の ``ModuleNameInit`` を利用して、
+あるいは、 ``libtestOriginalPort.so`` を初期化関数の ``testOriginalPortInit`` を利用して、
 マネージャにロードすることができます。このライブラリは ``${prefix}/components/lib`` 
 または ``${prefix}/components/lib64`` にインストールされます。
 
@@ -115,7 +115,7 @@ out             OutPort     Sample::SampleDataType
 例
 ==
 
-例のrtc.confファイルは ``${prefix}/components/share/ModuleName/examples/conf/``
+例のrtc.confファイルは ``${prefix}/components/share/testOriginalPort/examples/conf/``
 フォルダにインストールされています。
 
 Changelog

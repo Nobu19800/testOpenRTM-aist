@@ -1,5 +1,5 @@
-set(comp_srcs ModuleName.cpp )
-set(standalone_srcs ModuleNameComp.cpp)
+set(comp_srcs testOriginalPort.cpp )
+set(standalone_srcs testOriginalPortComp.cpp)
 
 if(${OPENRTM_VERSION_MAJOR} LESS 2)
   set(OPENRTM_CFLAGS ${OPENRTM_CFLAGS} ${OMNIORB_CFLAGS})

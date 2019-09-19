@@ -1,0 +1,54 @@
+# testServiceConsumerjava CMake config file
+#
+# This file sets the following variables:
+# testServiceConsumerjava_FOUND - Always TRUE.
+# testServiceConsumerjava_INCLUDE_DIRS - Directories containing the testServiceConsumerjava include files.
+# testServiceConsumerjava_IDL_DIRS - Directories containing the testServiceConsumerjava IDL files.
+# testServiceConsumerjava_LIBRARIES - Libraries needed to use testServiceConsumerjava.
+# testServiceConsumerjava_DEFINITIONS - Compiler flags for testServiceConsumerjava.
+# testServiceConsumerjava_VERSION - The version of testServiceConsumerjava found.
+# testServiceConsumerjava_VERSION_MAJOR - The major version of testServiceConsumerjava found.
+# testServiceConsumerjava_VERSION_MINOR - The minor version of testServiceConsumerjava found.
+# testServiceConsumerjava_VERSION_REVISION - The revision version of testServiceConsumerjava found.
+# testServiceConsumerjava_VERSION_CANDIDATE - The candidate version of testServiceConsumerjava found.
+
+message(STATUS "Found testServiceConsumerjava-@PROJECT_VERSION@")
+set(testServiceConsumerjava_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(testServiceConsumerjava_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(testServiceConsumerjava_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(testServiceConsumerjava_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(testServiceConsumerjava_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(testServiceConsumerjava_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(testServiceConsumerjava_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(testServiceConsumerjava_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(testServiceConsumerjava_VERSION @PROJECT_VERSION@)
+set(testServiceConsumerjava_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(testServiceConsumerjava_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(testServiceConsumerjava_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(testServiceConsumerjava_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+
