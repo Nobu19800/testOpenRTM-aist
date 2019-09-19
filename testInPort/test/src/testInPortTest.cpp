@@ -1,0 +1,164 @@
+﻿// -*- C++ -*-
+/*!
+ * @file  testInPortTest.cpp
+ * @brief ModuleDescription
+ * @date $Date$
+ *
+ * $Id$
+ */
+
+#include "testInPortTest.h"
+
+// Module specification
+// <rtc-template block="module_spec">
+static const char* testinport_spec[] =
+  {
+    "implementation_id", "testInPortTest",
+    "type_name",         "testInPortTest",
+    "description",       "ModuleDescription",
+    "version",           "1.0.0",
+    "vendor",            "VenderName",
+    "category",          "Category",
+    "activity_type",     "PERIODIC",
+    "kind",              "DataFlowComponent",
+    "max_instance",      "1",
+    "language",          "C++",
+    "lang_type",         "compile",
+    ""
+  };
+// </rtc-template>
+
+/*!
+ * @brief constructor
+ * @param manager Maneger Object
+ */
+testInPortTest::testInPortTest(RTC::Manager* manager)
+    // <rtc-template block="initializer">
+  : RTC::DataFlowComponentBase(manager),
+    m_inIn("in", m_in)
+
+    // </rtc-template>
+{
+}
+
+/*!
+ * @brief destructor
+ */
+testInPortTest::~testInPortTest()
+{
+}
+
+
+
+RTC::ReturnCode_t testInPortTest::onInitialize()
+{
+  // Registration: InPort/OutPort/Service
+  // <rtc-template block="registration">
+  // Set InPort buffers
+  
+  // Set OutPort buffer
+  addOutPort("in", m_inOut);
+  
+  // Set service provider to Ports
+  
+  // Set service consumers to Ports
+  
+  // Set CORBA Service Ports
+  
+  // </rtc-template>
+
+  // <rtc-template block="bind_config">
+  // </rtc-template>
+  
+  return RTC::RTC_OK;
+}
+
+/*
+RTC::ReturnCode_t testInPortTest::onFinalize()
+{
+  return RTC::RTC_OK;
+}
+*/
+
+/*
+RTC::ReturnCode_t testInPortTest::onStartup(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+/*
+RTC::ReturnCode_t testInPortTest::onShutdown(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+
+RTC::ReturnCode_t testInPortTest::onActivated(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+
+
+RTC::ReturnCode_t testInPortTest::onDeactivated(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+
+
+RTC::ReturnCode_t testInPortTest::onExecute(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+
+/*
+RTC::ReturnCode_t testInPortTest::onAborting(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+/*
+RTC::ReturnCode_t testInPortTest::onError(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+
+RTC::ReturnCode_t testInPortTest::onReset(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+
+/*
+RTC::ReturnCode_t testInPortTest::onStateUpdate(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+/*
+RTC::ReturnCode_t testInPortTest::onRateChanged(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+
+
+extern "C"
+{
+ 
+  void testInPortTestInit(RTC::Manager* manager)
+  {
+    coil::Properties profile(testinport_spec);
+    manager->registerFactory(profile,
+                             RTC::Create<testInPortTest>,
+                             RTC::Delete<testInPortTest>);
+  }
+  
+};
+
+

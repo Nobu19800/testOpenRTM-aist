@@ -1,0 +1,54 @@
+# testOutPortpy CMake config file
+#
+# This file sets the following variables:
+# testOutPortpy_FOUND - Always TRUE.
+# testOutPortpy_INCLUDE_DIRS - Directories containing the testOutPortpy include files.
+# testOutPortpy_IDL_DIRS - Directories containing the testOutPortpy IDL files.
+# testOutPortpy_LIBRARIES - Libraries needed to use testOutPortpy.
+# testOutPortpy_DEFINITIONS - Compiler flags for testOutPortpy.
+# testOutPortpy_VERSION - The version of testOutPortpy found.
+# testOutPortpy_VERSION_MAJOR - The major version of testOutPortpy found.
+# testOutPortpy_VERSION_MINOR - The minor version of testOutPortpy found.
+# testOutPortpy_VERSION_REVISION - The revision version of testOutPortpy found.
+# testOutPortpy_VERSION_CANDIDATE - The candidate version of testOutPortpy found.
+
+message(STATUS "Found testOutPortpy-@PROJECT_VERSION@")
+set(testOutPortpy_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(testOutPortpy_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(testOutPortpy_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(testOutPortpy_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(testOutPortpy_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(testOutPortpy_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(testOutPortpy_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(testOutPortpy_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(testOutPortpy_VERSION @PROJECT_VERSION@)
+set(testOutPortpy_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(testOutPortpy_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(testOutPortpy_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(testOutPortpy_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

@@ -1,0 +1,54 @@
+# testServiceProviderpy CMake config file
+#
+# This file sets the following variables:
+# testServiceProviderpy_FOUND - Always TRUE.
+# testServiceProviderpy_INCLUDE_DIRS - Directories containing the testServiceProviderpy include files.
+# testServiceProviderpy_IDL_DIRS - Directories containing the testServiceProviderpy IDL files.
+# testServiceProviderpy_LIBRARIES - Libraries needed to use testServiceProviderpy.
+# testServiceProviderpy_DEFINITIONS - Compiler flags for testServiceProviderpy.
+# testServiceProviderpy_VERSION - The version of testServiceProviderpy found.
+# testServiceProviderpy_VERSION_MAJOR - The major version of testServiceProviderpy found.
+# testServiceProviderpy_VERSION_MINOR - The minor version of testServiceProviderpy found.
+# testServiceProviderpy_VERSION_REVISION - The revision version of testServiceProviderpy found.
+# testServiceProviderpy_VERSION_CANDIDATE - The candidate version of testServiceProviderpy found.
+
+message(STATUS "Found testServiceProviderpy-@PROJECT_VERSION@")
+set(testServiceProviderpy_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(testServiceProviderpy_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(testServiceProviderpy_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(testServiceProviderpy_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(testServiceProviderpy_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(testServiceProviderpy_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(testServiceProviderpy_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(testServiceProviderpy_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(testServiceProviderpy_VERSION @PROJECT_VERSION@)
+set(testServiceProviderpy_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(testServiceProviderpy_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(testServiceProviderpy_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(testServiceProviderpy_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

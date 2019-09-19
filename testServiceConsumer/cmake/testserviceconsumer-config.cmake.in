@@ -1,0 +1,54 @@
+# testServiceConsumer CMake config file
+#
+# This file sets the following variables:
+# testServiceConsumer_FOUND - Always TRUE.
+# testServiceConsumer_INCLUDE_DIRS - Directories containing the testServiceConsumer include files.
+# testServiceConsumer_IDL_DIRS - Directories containing the testServiceConsumer IDL files.
+# testServiceConsumer_LIBRARIES - Libraries needed to use testServiceConsumer.
+# testServiceConsumer_DEFINITIONS - Compiler flags for testServiceConsumer.
+# testServiceConsumer_VERSION - The version of testServiceConsumer found.
+# testServiceConsumer_VERSION_MAJOR - The major version of testServiceConsumer found.
+# testServiceConsumer_VERSION_MINOR - The minor version of testServiceConsumer found.
+# testServiceConsumer_VERSION_REVISION - The revision version of testServiceConsumer found.
+# testServiceConsumer_VERSION_CANDIDATE - The candidate version of testServiceConsumer found.
+
+message(STATUS "Found testServiceConsumer-@PROJECT_VERSION@")
+set(testServiceConsumer_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(testServiceConsumer_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(testServiceConsumer_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(testServiceConsumer_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(testServiceConsumer_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(testServiceConsumer_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(testServiceConsumer_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(testServiceConsumer_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(testServiceConsumer_VERSION @PROJECT_VERSION@)
+set(testServiceConsumer_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(testServiceConsumer_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(testServiceConsumer_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(testServiceConsumer_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

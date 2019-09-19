@@ -1,0 +1,54 @@
+# testInPort CMake config file
+#
+# This file sets the following variables:
+# testInPort_FOUND - Always TRUE.
+# testInPort_INCLUDE_DIRS - Directories containing the testInPort include files.
+# testInPort_IDL_DIRS - Directories containing the testInPort IDL files.
+# testInPort_LIBRARIES - Libraries needed to use testInPort.
+# testInPort_DEFINITIONS - Compiler flags for testInPort.
+# testInPort_VERSION - The version of testInPort found.
+# testInPort_VERSION_MAJOR - The major version of testInPort found.
+# testInPort_VERSION_MINOR - The minor version of testInPort found.
+# testInPort_VERSION_REVISION - The revision version of testInPort found.
+# testInPort_VERSION_CANDIDATE - The candidate version of testInPort found.
+
+message(STATUS "Found testInPort-@PROJECT_VERSION@")
+set(testInPort_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(testInPort_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(testInPort_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(testInPort_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(testInPort_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(testInPort_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(testInPort_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(testInPort_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(testInPort_VERSION @PROJECT_VERSION@)
+set(testInPort_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(testInPort_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(testInPort_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(testInPort_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

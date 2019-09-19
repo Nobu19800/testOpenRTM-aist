@@ -1,0 +1,54 @@
+# testOutPort CMake config file
+#
+# This file sets the following variables:
+# testOutPort_FOUND - Always TRUE.
+# testOutPort_INCLUDE_DIRS - Directories containing the testOutPort include files.
+# testOutPort_IDL_DIRS - Directories containing the testOutPort IDL files.
+# testOutPort_LIBRARIES - Libraries needed to use testOutPort.
+# testOutPort_DEFINITIONS - Compiler flags for testOutPort.
+# testOutPort_VERSION - The version of testOutPort found.
+# testOutPort_VERSION_MAJOR - The major version of testOutPort found.
+# testOutPort_VERSION_MINOR - The minor version of testOutPort found.
+# testOutPort_VERSION_REVISION - The revision version of testOutPort found.
+# testOutPort_VERSION_CANDIDATE - The candidate version of testOutPort found.
+
+message(STATUS "Found testOutPort-@PROJECT_VERSION@")
+set(testOutPort_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(testOutPort_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(testOutPort_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(testOutPort_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(testOutPort_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(testOutPort_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(testOutPort_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(testOutPort_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(testOutPort_VERSION @PROJECT_VERSION@)
+set(testOutPort_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(testOutPort_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(testOutPort_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(testOutPort_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

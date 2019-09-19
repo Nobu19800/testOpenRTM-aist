@@ -1,0 +1,54 @@
+# testServiceConsumerpy CMake config file
+#
+# This file sets the following variables:
+# testServiceConsumerpy_FOUND - Always TRUE.
+# testServiceConsumerpy_INCLUDE_DIRS - Directories containing the testServiceConsumerpy include files.
+# testServiceConsumerpy_IDL_DIRS - Directories containing the testServiceConsumerpy IDL files.
+# testServiceConsumerpy_LIBRARIES - Libraries needed to use testServiceConsumerpy.
+# testServiceConsumerpy_DEFINITIONS - Compiler flags for testServiceConsumerpy.
+# testServiceConsumerpy_VERSION - The version of testServiceConsumerpy found.
+# testServiceConsumerpy_VERSION_MAJOR - The major version of testServiceConsumerpy found.
+# testServiceConsumerpy_VERSION_MINOR - The minor version of testServiceConsumerpy found.
+# testServiceConsumerpy_VERSION_REVISION - The revision version of testServiceConsumerpy found.
+# testServiceConsumerpy_VERSION_CANDIDATE - The candidate version of testServiceConsumerpy found.
+
+message(STATUS "Found testServiceConsumerpy-@PROJECT_VERSION@")
+set(testServiceConsumerpy_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(testServiceConsumerpy_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(testServiceConsumerpy_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(testServiceConsumerpy_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(testServiceConsumerpy_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(testServiceConsumerpy_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(testServiceConsumerpy_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(testServiceConsumerpy_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(testServiceConsumerpy_VERSION @PROJECT_VERSION@)
+set(testServiceConsumerpy_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(testServiceConsumerpy_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(testServiceConsumerpy_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(testServiceConsumerpy_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+
