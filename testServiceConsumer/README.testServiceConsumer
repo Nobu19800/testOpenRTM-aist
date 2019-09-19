@@ -45,11 +45,11 @@ Lang Type:
 
 [on_shutdown]
 
-[on_activated]
+[on_activated]     implemented
 
-[on_deactivated]
+[on_deactivated]   implemented
 
-[on_execute]
+[on_execute]       implemented
 
 [on_aborting]
 

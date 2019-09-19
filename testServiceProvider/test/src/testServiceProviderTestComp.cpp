@@ -11,18 +11,21 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <rtm/CORBA_RTCUtil.h>
 #include "testServiceProviderTest.h"
+#include "testServiceProvider.h"
 
 
 void MyModuleInit(RTC::Manager* manager)
 {
   testServiceProviderTestInit(manager);
+  testServiceProviderInit(manager);
   RTC::RtcBase* comp;
 
   // Create a component
   comp = manager->createComponent("testServiceProviderTest");
 
-  if (comp==NULL)
+  if (comp==nullptr)
   {
     std::cerr << "Component create failed." << std::endl;
     abort();
@@ -71,13 +74,31 @@ void MyModuleInit(RTC::Manager* manager)
   return;
 }
 
+bool RunTest()
+{
+  RTC::RtcBase* comp;
+  RTC::Manager &mamager = RTC::Manager::instance();
+  comp = mamager.getComponent("testServiceProviderTest0");
+  if (comp == nullptr)
+  {
+    std::cerr << "Component get failed." << std::endl;
+    return false;
+  }
+
+  testServiceProviderTest* testcomp = dynamic_cast<testServiceProviderTest*>(comp);
+  if (testcomp == nullptr)
+  {
+    std::cerr << "Component get failed." << std::endl;
+    return false;
+  }
+
+  return testcomp->runTest();
+}
+
 int main (int argc, char** argv)
 {
   RTC::Manager* manager;
   manager = RTC::Manager::init(argc, argv);
-
-  // Initialize manager
-  manager->init(argc, argv);
 
   // Set module initialization proceduer
   // This procedure will be invoked in activateManager() function.
@@ -88,10 +109,22 @@ int main (int argc, char** argv)
 
   // run the manager in blocking mode
   // runManager(false) is the default.
-  manager->runManager();
+  // manager->runManager();
 
   // If you want to run the manager in non-blocking mode, do like this
-  // manager->runManager(true);
+  manager->runManager(true);
 
-  return 0;
+  bool ret = RunTest();
+
+  manager->shutdown();
+
+  
+  if (ret)
+  {
+    return 0;
+  }
+  else
+  {
+    return 1;
+  }
 }

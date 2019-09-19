@@ -142,47 +142,47 @@ class testServiceConsumerpyTest(OpenRTM_aist.DataFlowComponentBase):
 	#
 	#	return RTC.RTC_OK
 	
-	#	##
-	#	#
-	#	# The activated action (Active state entry action)
-	#	# former rtc_active_entry()
-	#	#
-	#	# @param ec_id target ExecutionContext Id
-	#	# 
-	#	# @return RTC::ReturnCode_t
-	#	#
-	#	#
-	#def onActivated(self, ec_id):
-	#
-	#	return RTC.RTC_OK
+		##
+		#
+		# The activated action (Active state entry action)
+		# former rtc_active_entry()
+		#
+		# @param ec_id target ExecutionContext Id
+		# 
+		# @return RTC::ReturnCode_t
+		#
+		#
+	def onActivated(self, ec_id):
 	
-	#	##
-	#	#
-	#	# The deactivated action (Active state exit action)
-	#	# former rtc_active_exit()
-	#	#
-	#	# @param ec_id target ExecutionContext Id
-	#	#
-	#	# @return RTC::ReturnCode_t
-	#	#
-	#	#
-	#def onDeactivated(self, ec_id):
-	#
-	#	return RTC.RTC_OK
+		return RTC.RTC_OK
 	
-	#	##
-	#	#
-	#	# The execution action that is invoked periodically
-	#	# former rtc_active_do()
-	#	#
-	#	# @param ec_id target ExecutionContext Id
-	#	#
-	#	# @return RTC::ReturnCode_t
-	#	#
-	#	#
-	#def onExecute(self, ec_id):
-	#
-	#	return RTC.RTC_OK
+		##
+		#
+		# The deactivated action (Active state exit action)
+		# former rtc_active_exit()
+		#
+		# @param ec_id target ExecutionContext Id
+		#
+		# @return RTC::ReturnCode_t
+		#
+		#
+	def onDeactivated(self, ec_id):
+	
+		return RTC.RTC_OK
+	
+		##
+		#
+		# The execution action that is invoked periodically
+		# former rtc_active_do()
+		#
+		# @param ec_id target ExecutionContext Id
+		#
+		# @return RTC::ReturnCode_t
+		#
+		#
+	def onExecute(self, ec_id):
+	
+		return RTC.RTC_OK
 	
 	#	##
 	#	#

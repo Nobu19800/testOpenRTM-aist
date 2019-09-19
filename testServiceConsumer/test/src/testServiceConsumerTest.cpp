@@ -95,26 +95,23 @@ RTC::ReturnCode_t testServiceConsumerTest::onShutdown(RTC::UniqueId ec_id)
 }
 */
 
-/*
+
 RTC::ReturnCode_t testServiceConsumerTest::onActivated(RTC::UniqueId ec_id)
 {
   return RTC::RTC_OK;
 }
-*/
 
-/*
+
 RTC::ReturnCode_t testServiceConsumerTest::onDeactivated(RTC::UniqueId ec_id)
 {
   return RTC::RTC_OK;
 }
-*/
 
-/*
+
 RTC::ReturnCode_t testServiceConsumerTest::onExecute(RTC::UniqueId ec_id)
 {
   return RTC::RTC_OK;
 }
-*/
 
 /*
 RTC::ReturnCode_t testServiceConsumerTest::onAborting(RTC::UniqueId ec_id)

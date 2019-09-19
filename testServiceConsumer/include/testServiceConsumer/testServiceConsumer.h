@@ -124,7 +124,7 @@ class testServiceConsumer
    * 
    * 
    */
-  // virtual RTC::ReturnCode_t onActivated(RTC::UniqueId ec_id);
+   virtual RTC::ReturnCode_t onActivated(RTC::UniqueId ec_id);
 
   /***
    *
@@ -137,7 +137,7 @@ class testServiceConsumer
    * 
    * 
    */
-  // virtual RTC::ReturnCode_t onDeactivated(RTC::UniqueId ec_id);
+   virtual RTC::ReturnCode_t onDeactivated(RTC::UniqueId ec_id);
 
   /***
    *
@@ -150,7 +150,7 @@ class testServiceConsumer
    * 
    * 
    */
-  // virtual RTC::ReturnCode_t onExecute(RTC::UniqueId ec_id);
+   virtual RTC::ReturnCode_t onExecute(RTC::UniqueId ec_id);
 
   /***
    *

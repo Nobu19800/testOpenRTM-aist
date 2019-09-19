@@ -83,7 +83,7 @@ ADD_CUSTOM_TARGET (${PROJECT_NAME}_uninstall "${CMAKE_COMMAND}" -P
 
 #option(BUILD_EXAMPLES "Build and install examples" OFF)
 option(BUILD_DOCUMENTATION "Build the documentation" OFF)
-#option(BUILD_TESTS "Build the tests" OFF)
+option(BUILD_TESTS "Build the tests" OFF)
 #option(BUILD_TOOLS "Build the tools" OFF)
 option(BUILD_IDL "Build and install idl" ON)
 option(BUILD_SOURCES "Build and install sources" OFF)
@@ -114,9 +114,6 @@ else(WIN32)
    set(INSTALL_PREFIX "${OPENRTM_SHARE_PREFIX}/components/${PROJECT_TYPE}/${PROJECT_NAME}")
 endif(WIN32)
        
-# Universal settings
-#enable_testing()
-
 # Subdirectories
 add_subdirectory(cmake)
 if(BUILD_DOCUMENTATION)
@@ -135,9 +132,11 @@ add_subdirectory(include)
 MAP_ADD_STR(headers  "include/" comp_hdrs)
 add_subdirectory(src)
 
-#if(BUILD_TESTS)
-#    add_subdirectory(test)
-#endif(BUILD_TESTS)
+if(BUILD_TESTS)
+    # Universal settings
+    enable_testing()
+    add_subdirectory(test)
+endif(BUILD_TESTS)
 
 #if(BUILD_TOOLS)
 #    add_subdirectory(tools)

@@ -152,6 +152,11 @@ RTC::ReturnCode_t testServiceProviderTest::onRateChanged(RTC::UniqueId ec_id)
 */
 
 
+bool testServiceProviderTest::runTest()
+{
+    return true;
+}
+
 
 extern "C"
 {

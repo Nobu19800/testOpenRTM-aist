@@ -36,7 +36,6 @@ testServiceProvider::testServiceProvider(RTC::Manager* manager)
     // <rtc-template block="initializer">
   : RTC::DataFlowComponentBase(manager),
     m_ManipulatorCommonInterface_MiddlePortPort("ManipulatorCommonInterface_MiddlePort")
-
     // </rtc-template>
 {
 }
@@ -57,6 +56,7 @@ RTC::ReturnCode_t testServiceProvider::onInitialize()
   // Set InPort buffers
   
   // Set OutPort buffer
+
   
   // Set service provider to Ports
   m_ManipulatorCommonInterface_MiddlePortPort.registerProvider("ManipulatorCommonInterface_Middle", "JARA_ARM::ManipulatorCommonInterface_Middle", m_ManipulatorCommonInterface_Middle);
@@ -70,6 +70,7 @@ RTC::ReturnCode_t testServiceProvider::onInitialize()
 
   // <rtc-template block="bind_config">
   // </rtc-template>
+
   
   return RTC::RTC_OK;
 }

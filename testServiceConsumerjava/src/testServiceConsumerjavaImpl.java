@@ -115,10 +115,10 @@ public class testServiceConsumerjavaImpl extends DataFlowComponentBase {
      * 
      * 
      */
-//    @Override
-//    protected ReturnCode_t onActivated(int ec_id) {
-//        return super.onActivated(ec_id);
-//    }
+    @Override
+    protected ReturnCode_t onActivated(int ec_id) {
+        return super.onActivated(ec_id);
+    }
 
     /**
      *
@@ -131,10 +131,10 @@ public class testServiceConsumerjavaImpl extends DataFlowComponentBase {
      * 
      * 
      */
-//    @Override
-//    protected ReturnCode_t onDeactivated(int ec_id) {
-//        return super.onDeactivated(ec_id);
-//    }
+    @Override
+    protected ReturnCode_t onDeactivated(int ec_id) {
+        return super.onDeactivated(ec_id);
+    }
 
     /**
      *
@@ -147,10 +147,10 @@ public class testServiceConsumerjavaImpl extends DataFlowComponentBase {
      * 
      * 
      */
-//    @Override
-//    protected ReturnCode_t onExecute(int ec_id) {
-//        return super.onExecute(ec_id);
-//    }
+    @Override
+    protected ReturnCode_t onExecute(int ec_id) {
+        return super.onExecute(ec_id);
+    }
 
     /**
      *
