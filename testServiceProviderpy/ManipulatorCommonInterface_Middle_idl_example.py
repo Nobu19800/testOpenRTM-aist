@@ -31,211 +31,246 @@ class ManipulatorCommonInterface_Middle_i (JARA_ARM__POA.ManipulatorCommonInterf
 
     # RETURN_ID closeGripper()
     def closeGripper(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("closeGripper")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID getBaseOffset(out HgMatrix offset)
     def getBaseOffset(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("getBaseOffset")
+        return JARA_ARM.RETURN_ID(1, "test"), [[0]*4]*3
         # *** Implement me
         # Must return: result, offset
 
     # RETURN_ID getFeedbackPosCartesian(out CarPosWithElbow pos)
     def getFeedbackPosCartesian(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("getFeedbackPosCartesian")
+        return JARA_ARM.RETURN_ID(1, "test"), JARA_ARM.CarPosWithElbow([[0]*4]*3, 0,  0)
         # *** Implement me
         # Must return: result, pos
 
     # RETURN_ID getMaxSpeedCartesian(out CartesianSpeed speed)
     def getMaxSpeedCartesian(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("getMaxSpeedCartesian")
+        return JARA_ARM.RETURN_ID(1, "test"), JARA_ARM.CartesianSpeed(0, 0)
         # *** Implement me
         # Must return: result, speed
 
     # RETURN_ID getMaxSpeedJoint(out DoubleSeq speed)
     def getMaxSpeedJoint(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("getMaxSpeedJoint")
+        return JARA_ARM.RETURN_ID(1, "test"), []
         # *** Implement me
         # Must return: result, speed
 
     # RETURN_ID getMinAccelTimeCartesian(out double aclTime)
     def getMinAccelTimeCartesian(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("getMinAccelTimeCartesian")
+        return JARA_ARM.RETURN_ID(1, "test"), 0
         # *** Implement me
         # Must return: result, aclTime
 
     # RETURN_ID getMinAccelTimeJoint(out double aclTime)
     def getMinAccelTimeJoint(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("getMinAccelTimeJoint")
+        return JARA_ARM.RETURN_ID(1, "test"), 0
         # *** Implement me
         # Must return: result, aclTime
 
     # RETURN_ID getSoftLimitCartesian(out LimitValue xLimit, out LimitValue yLimit, out LimitValue zLimit)
     def getSoftLimitCartesian(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("getSoftLimitCartesian")
+        return JARA_ARM.RETURN_ID(1, "test"), JARA_ARM.LimitValue(0, 0), JARA_ARM.LimitValue(0, 0), JARA_ARM.LimitValue(0, 0)
         # *** Implement me
         # Must return: result, xLimit, yLimit, zLimit
 
     # RETURN_ID moveGripper(in ULONG angleRatio)
     def moveGripper(self, angleRatio):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("moveGripper")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID moveLinearCartesianAbs(in CarPosWithElbow carPoint)
     def moveLinearCartesianAbs(self, carPoint):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("moveLinearCartesianAbs")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID moveLinearCartesianRel(in CarPosWithElbow carPoint)
     def moveLinearCartesianRel(self, carPoint):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("moveLinearCartesianRel")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID movePTPCartesianAbs(in CarPosWithElbow carPoint)
     def movePTPCartesianAbs(self, carPoint):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("movePTPCartesianAbs")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID movePTPCartesianRel(in CarPosWithElbow carPoint)
     def movePTPCartesianRel(self, carPoint):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("movePTPCartesianRel")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID movePTPJointAbs(in JointPos jointPoints)
     def movePTPJointAbs(self, jointPoints):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("movePTPJointAbs")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID movePTPJointRel(in JointPos jointPoints)
     def movePTPJointRel(self, jointPoints):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("movePTPJointRel")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID openGripper()
     def openGripper(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("openGripper")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID pause()
     def pause(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("pause")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID resume()
     def resume(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("resume")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID stop()
     def stop(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("stop")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID setAccelTimeCartesian(in double aclTime)
     def setAccelTimeCartesian(self, aclTime):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("setAccelTimeCartesian")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID setAccelTimeJoint(in double aclTime)
     def setAccelTimeJoint(self, aclTime):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("setAccelTimeJoint")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID setBaseOffset(in HgMatrix offset)
     def setBaseOffset(self, offset):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("setBaseOffset")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID setControlPointOffset(in HgMatrix offset)
     def setControlPointOffset(self, offset):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("setControlPointOffset")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID setMaxSpeedCartesian(in CartesianSpeed speed)
     def setMaxSpeedCartesian(self, speed):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("setMaxSpeedCartesian")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID setMaxSpeedJoint(in DoubleSeq speed)
     def setMaxSpeedJoint(self, speed):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("setMaxSpeedJoint")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID setMinAccelTimeCartesian(in double aclTime)
     def setMinAccelTimeCartesian(self, aclTime):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("setMinAccelTimeCartesian")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID setMinAccelTimeJoint(in double aclTime)
     def setMinAccelTimeJoint(self, aclTime):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("setMinAccelTimeJoint")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID setSoftLimitCartesian(in LimitValue xLimit, in LimitValue yLimit, in LimitValue zLimit)
     def setSoftLimitCartesian(self, xLimit, yLimit, zLimit):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("setSoftLimitCartesian")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID setSpeedCartesian(in ULONG spdRatio)
     def setSpeedCartesian(self, spdRatio):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("setSpeedCartesian")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID setSpeedJoint(in ULONG spdRatio)
     def setSpeedJoint(self, spdRatio):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("setSpeedJoint")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID moveCircularCartesianAbs(in CarPosWithElbow carPointR, in CarPosWithElbow carPointT)
     def moveCircularCartesianAbs(self, carPointR, carPointT):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("moveCircularCartesianAbs")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID moveCircularCartesianRel(in CarPosWithElbow carPointR, in CarPosWithElbow carPointT)
     def moveCircularCartesianRel(self, carPointR, carPointT):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("moveCircularCartesianRel")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID setHome(in JointPos jointPoint)
     def setHome(self, jointPoint):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("setHome")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 
     # RETURN_ID getHome(out JointPos jointPoint)
     def getHome(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("getHome")
+        return JARA_ARM.RETURN_ID(1, "test"), []
         # *** Implement me
         # Must return: result, jointPoint
 
     # RETURN_ID goHome()
     def goHome(self):
-        raise CORBA.NO_IMPLEMENT(0, CORBA.COMPLETED_NO)
+        print("goHome")
+        return JARA_ARM.RETURN_ID(1, "test")
         # *** Implement me
         # Must return: result
 

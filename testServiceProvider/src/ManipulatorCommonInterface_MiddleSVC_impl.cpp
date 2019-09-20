@@ -88,6 +88,7 @@ JARA_ARM::RETURN_ID* JARA_ARM_ManipulatorCommonInterface_MiddleSVC_impl::getMaxS
   #warning "Code missing in function <JARA_ARM::RETURN_ID* JARA_ARM_ManipulatorCommonInterface_MiddleSVC_impl::getMaxSpeedJoint(JARA_ARM::DoubleSeq_out speed)>"
 #endif
       std::cout << "getMaxSpeedJoint" << std::endl;
+  speed = new JARA_ARM::DoubleSeq();
   return result;
 }
 
@@ -465,6 +466,7 @@ JARA_ARM::RETURN_ID* JARA_ARM_ManipulatorCommonInterface_MiddleSVC_impl::getHome
   #warning "Code missing in function <JARA_ARM::RETURN_ID* JARA_ARM_ManipulatorCommonInterface_MiddleSVC_impl::getHome(JARA_ARM::JointPos_out jointPoint)>"
 #endif
       std::cout << "getHome" << std::endl;
+  jointPoint = new JARA_ARM::JointPos();
   return result;
 }
 

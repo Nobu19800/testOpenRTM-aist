@@ -124,9 +124,9 @@ RTC::ReturnCode_t testServiceConsumer::onExecute(RTC::UniqueId ec_id)
     ret = m_ManipulatorCommonInterface_Middle._ptr()->getMaxSpeedCartesian(speed1);
     if (ret->id != 1)return RTC::RTC_ERROR;
 
-    //JARA_ARM::DoubleSeq_var speed2 = new JARA_ARM::DoubleSeq();
-    //ret = m_ManipulatorCommonInterface_Middle._ptr()->getMaxSpeedJoint(speed2);
-    //if (ret->id != 1)return RTC::RTC_ERROR;
+    JARA_ARM::DoubleSeq_var speed2 = new JARA_ARM::DoubleSeq();
+    ret = m_ManipulatorCommonInterface_Middle._ptr()->getMaxSpeedJoint(speed2.out());
+    if (ret->id != 1)return RTC::RTC_ERROR;
     CORBA::Double aclTime;
     ret = m_ManipulatorCommonInterface_Middle._ptr()->getMinAccelTimeCartesian(aclTime);
     if (ret->id != 1)return RTC::RTC_ERROR;
@@ -171,8 +171,8 @@ RTC::ReturnCode_t testServiceConsumer::onExecute(RTC::UniqueId ec_id)
     if (ret->id != 1)return RTC::RTC_ERROR;
     ret = m_ManipulatorCommonInterface_Middle._ptr()->setMaxSpeedCartesian(speed1);
     if (ret->id != 1)return RTC::RTC_ERROR;
-    //ret = m_ManipulatorCommonInterface_Middle._ptr()->setMaxSpeedJoint(speed2);
-    //if (ret->id != 1)return RTC::RTC_ERROR;
+    ret = m_ManipulatorCommonInterface_Middle._ptr()->setMaxSpeedJoint(speed2);
+    if (ret->id != 1)return RTC::RTC_ERROR;
     ret = m_ManipulatorCommonInterface_Middle._ptr()->setMinAccelTimeCartesian(0);
     if (ret->id != 1)return RTC::RTC_ERROR;
     ret = m_ManipulatorCommonInterface_Middle._ptr()->setMinAccelTimeJoint(0);
@@ -191,9 +191,9 @@ RTC::ReturnCode_t testServiceConsumer::onExecute(RTC::UniqueId ec_id)
     if (ret->id != 1)return RTC::RTC_ERROR;
     ret = m_ManipulatorCommonInterface_Middle._ptr()->setHome(jointPoints);
     if (ret->id != 1)return RTC::RTC_ERROR;
-    //JARA_ARM::JointPos_var jointPoints2 = new JARA_ARM::JointPos();
-    ///ret = m_ManipulatorCommonInterface_Middle._ptr()->getHome(jointPoints2);
-    //if (ret->id != 1)return RTC::RTC_ERROR;
+    JARA_ARM::JointPos_var jointPoints2 = new JARA_ARM::JointPos();
+    ret = m_ManipulatorCommonInterface_Middle._ptr()->getHome(jointPoints2);
+    if (ret->id != 1)return RTC::RTC_ERROR;
     ret = m_ManipulatorCommonInterface_Middle._ptr()->goHome();
     if (ret->id != 1)return RTC::RTC_ERROR;
   return RTC::RTC_OK;
