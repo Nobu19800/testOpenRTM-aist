@@ -77,10 +77,21 @@ endif()
 
 option(BUILD_DOCUMENTATION "Build the documentation" OFF)
 
+set(IDL_FILES ""
+              testService.idl
+)
+
+if(WIN32)
+    set(SCRIPT_FILE ""
+                    idlcompile.bat delete.bat)
+else()
+    set(SCRIPT_FILE ""
+                    idlcompile.sh)
+endif()
 
 set(EXEC_FILES ""
                testOriginalServicepy.py
-)
+               ${SCRIPT_FILE})
 
 set(OTHER_SRCS CMakeLists.txt
                RTC.xml testOriginalServicepy.conf rtc.conf)
@@ -99,6 +110,21 @@ else()
    set(INSTALL_PREFIX "${OPENRTM_SHARE_PREFIX}/components/${PROJECT_TYPE}/${PROJECT_NAME}")
 endif()
 
+# postinst, prerm settings
+if(UNIX)
+		configure_file(${CMAKE_CURRENT_SOURCE_DIR}/postinst.in
+			${CMAKE_CURRENT_SOURCE_DIR}/postinst @ONLY
+		)
+		configure_file(${CMAKE_CURRENT_SOURCE_DIR}/prerm.in
+			  ${CMAKE_CURRENT_SOURCE_DIR}/prerm @ONLY
+		)
+endif()
+
+add_custom_target( ${PROJECT_NAME} ALL
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${PROJECT_BINARY_DIR}/idl
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+      ${PROJECT_SOURCE_DIR}/idl ${PROJECT_BINARY_DIR}/idl
+)
 
 foreach(target ${EXEC_FILES})
   add_custom_command( TARGET ${PROJECT_NAME} POST_BUILD
@@ -113,6 +139,8 @@ install(PROGRAMS ${EXEC_FILES} DESTINATION "${INSTALL_PREFIX}"
 install(FILES ${PROJECT_SOURCE_DIR}/RTC.xml DESTINATION ${INSTALL_PREFIX}
         COMPONENT component)
 
+install(DIRECTORY idl DESTINATION "${INSTALL_PREFIX}"
+        COMPONENT component)
 
 # add uninstall target
 configure_file(
@@ -133,6 +161,20 @@ if(BUILD_DOCUMENTATION)
     add_subdirectory(doc)
 endif(BUILD_DOCUMENTATION)
 
+if(UNIX)
+    set(CPACK_GENERATOR "${LINUX_PACKAGE_GENERATOR}")
+    if(CPACK_DEBIAN_PACKAGE_ARCHITECTURE)
+				set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "${CMAKE_SOURCE_DIR}/postinst;${CMAKE_SOURCE_DIR}/prerm")
+    endif(CPACK_DEBIAN_PACKAGE_ARCHITECTURE)
+    if(CPACK_RPM_PACKAGE_ARCHITECTURE)
+        set(CPACK_RPM_POST_INSTALL_SCRIPT_FILE "${CMAKE_SOURCE_DIR}/postinst")
+        set(CPACK_RPM_POST_UNINSTALL_SCRIPT_FILE "${CMAKE_SOURCE_DIR}/prerm")
+    endif(CPACK_RPM_PACKAGE_ARCHITECTURE)
+endif()
+
+set(WIX_PATCH_FILE "${CMAKE_CURRENT_BINARY_DIR}/wix_patch.xml")
+configure_file("cmake/wix_patch.xml.in"
+           ${WIX_PATCH_FILE} @ONLY)
 
 set(cpack_options "${PROJECT_BINARY_DIR}/cpack_options.cmake")
 configure_file("${PROJECT_SOURCE_DIR}/cmake/cpack_options.cmake.in"

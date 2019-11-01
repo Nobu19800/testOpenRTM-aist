@@ -7,18 +7,13 @@
  * $Id$
  */
 
-import java.lang.reflect.Array;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
-import Sample.SampleDataType;
 import jp.go.aist.rtm.RTC.DataFlowComponentBase;
 import jp.go.aist.rtm.RTC.Manager;
-import jp.go.aist.rtm.RTC.port.InPort;
-import jp.go.aist.rtm.RTC.port.OutPort;
-import jp.go.aist.rtm.RTC.util.DataRef;
+import jp.go.aist.rtm.RTC.port.CorbaPort;
+import org.omg.PortableServer.POAPackage.ObjectNotActive;
+import org.omg.PortableServer.POAPackage.ServantAlreadyActive;
+import org.omg.PortableServer.POAPackage.WrongPolicy;
 import RTC.ReturnCode_t;
 
 /**
@@ -36,13 +31,7 @@ public class testOriginalServicejavaImpl extends DataFlowComponentBase {
     public testOriginalServicejavaImpl(Manager manager) {  
         super(manager);
         // <rtc-template block="initializer">
-        m_in_val = new SampleDataType();
-        initializeParam(m_in_val);
-        m_in = new DataRef<SampleDataType>(m_in_val);
-        m_inIn = new InPort<SampleDataType>("in", m_in);
-        m_out_val = new SampleDataType();
-        m_out = new DataRef<SampleDataType>(m_out_val);
-        m_outOut = new OutPort<SampleDataType>("out", m_out);
+        m_servicePort = new CorbaPort("service");
         // </rtc-template>
 
     }
@@ -60,11 +49,22 @@ public class testOriginalServicejavaImpl extends DataFlowComponentBase {
     protected ReturnCode_t onInitialize() {
         // Registration: InPort/OutPort/Service
         // <rtc-template block="registration">
-        // Set InPort buffers
-        addInPort("in", m_inIn);
         
-        // Set OutPort buffer
-        addOutPort("out", m_outOut);
+        // Set service provider to Ports
+        try {
+            m_servicePort.registerProvider("sampleinterface", "Sample.SampleInterface", m_sampleinterface);
+        } catch (ServantAlreadyActive e) {
+            e.printStackTrace();
+        } catch (WrongPolicy e) {
+            e.printStackTrace();
+        } catch (ObjectNotActive e) {
+            e.printStackTrace();
+        }
+        
+        // Set service consumers to Ports
+        
+        // Set CORBA Service Ports
+        addPort(m_servicePort);
         // </rtc-template>
         return super.onInitialize();
     }
@@ -250,33 +250,27 @@ public class testOriginalServicejavaImpl extends DataFlowComponentBase {
      */
     // DataInPort declaration
     // <rtc-template block="inport_declare">
-    protected SampleDataType m_in_val;
-    protected DataRef<SampleDataType> m_in;
-    /*!
-     */
-    protected InPort<SampleDataType> m_inIn;
-
     
     // </rtc-template>
 
     // DataOutPort declaration
     // <rtc-template block="outport_declare">
-    protected SampleDataType m_out_val;
-    protected DataRef<SampleDataType> m_out;
-    /*!
-     */
-    protected OutPort<SampleDataType> m_outOut;
-
     
     // </rtc-template>
 
     // CORBA Port declaration
     // <rtc-template block="corbaport_declare">
+    /*!
+     */
+    protected CorbaPort m_servicePort;
     
     // </rtc-template>
 
     // Service declaration
     // <rtc-template block="service_declare">
+    /*!
+     */
+    protected SampleInterfaceSVC_impl m_sampleinterface = new SampleInterfaceSVC_impl();
     
     // </rtc-template>
 
@@ -286,55 +280,4 @@ public class testOriginalServicejavaImpl extends DataFlowComponentBase {
     // </rtc-template>
 
 
-    private void initializeParam(Object target) {
-        Class<?> targetClass = target.getClass();
-        ClassLoader loader = target.getClass().getClassLoader();
-        //
-        Field[] fields = targetClass.getFields();
-        for(Field field : fields) {
-            if(field.getType().isPrimitive()) continue;
-            
-            try {
-                if(field.getType().isArray()) {
-                    Object arrayValue = null;
-                    Class<?> clazz = null;
-                    if(field.getType().getComponentType().isPrimitive()) {
-                        clazz = field.getType().getComponentType();
-                    } else {
-                            clazz = loader.loadClass(field.getType().getComponentType().getName());
-                    }
-                    arrayValue = Array.newInstance(clazz, 0);
-                    field.set(target, arrayValue);
-                    
-                } else {
-                    Constructor<?>[] constList = field.getType().getConstructors();
-                    if(constList.length==0) {
-                        Method[] methodList = field.getType().getMethods();
-                        for(Method method : methodList) {
-                            if(method.getName().equals("from_int")==false) continue;
-                            Object objFld = method.invoke(target, new Object[]{ new Integer(0) });
-                            field.set(target, objFld);
-                            break;
-                        }
-                        
-                    } else {
-                        Class<?> classFld = Class.forName(field.getType().getName(), true, loader);
-                        Object objFld = classFld.newInstance();
-                        initializeParam(objFld);
-                        field.set(target, objFld);
-                    }
-                }
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

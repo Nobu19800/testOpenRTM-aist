@@ -17,10 +17,11 @@ sys.path.append(".")
 import RTC
 import OpenRTM_aist
 
-import Sample
+import testService_idl
 
 # Import Service implementation class
 # <rtc-template block="service_impl">
+from testService_idl_example import *
 
 # </rtc-template>
 
@@ -58,18 +59,16 @@ class testOriginalServicepyTest(OpenRTM_aist.DataFlowComponentBase):
 	def __init__(self, manager):
 		OpenRTM_aist.DataFlowComponentBase.__init__(self, manager)
 
-		self._d_out = OpenRTM_aist.instantiateDataType(Sample.SampleDataType)
-		"""
-		"""
-		self._outIn = OpenRTM_aist.InPort("out", self._d_out)
-		self._d_in = OpenRTM_aist.instantiateDataType(Sample.SampleDataType)
-		"""
-		"""
-		self._inOut = OpenRTM_aist.OutPort("in", self._d_in)
 
+		"""
+		"""
+		self._servicePort = OpenRTM_aist.CorbaPort("service")
 
 		
 
+		"""
+		"""
+		self._sampleinterface = OpenRTM_aist.CorbaConsumer(interfaceType=Sample.SampleInterface)
 
 		# initialize of configuration-data.
 		# <rtc-template block="init_conf_param">
@@ -90,16 +89,16 @@ class testOriginalServicepyTest(OpenRTM_aist.DataFlowComponentBase):
 		# Bind variables and configuration variable
 		
 		# Set InPort buffers
-		self.addInPort("out",self._outIn)
 		
 		# Set OutPort buffers
-		self.addOutPort("in",self._inOut)
 		
 		# Set service provider to Ports
 		
 		# Set service consumers to Ports
+		self._servicePort.registerConsumer("sampleinterface", "Sample::SampleInterface", self._sampleinterface)
 		
 		# Set CORBA Service Ports
+		self.addPort(self._servicePort)
 		
 		return RTC.RTC_OK
 	

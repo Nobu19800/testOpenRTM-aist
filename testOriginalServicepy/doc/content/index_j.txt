@@ -108,8 +108,7 @@ testOriginalServicepyは ``testOriginalServicepyComp`` を実行（ ``${prefix}/
 =============== =========== ============================== ====
 ポート名        ポート型    データ型                       意味
 =============== =========== ============================== ====
-in              InPort      Sample::SampleDataType         
-out             OutPort     Sample::SampleDataType         
+sampleinterface ServicePort Sample::SampleInterface        
 =============== =========== ============================== ====
 
 例

@@ -116,8 +116,7 @@ The ports provided by the component are described below:
 =============== =========== ============================== =======
 Name            Type        Data type                      Purpose
 =============== =========== ============================== =======
-in              InPort      Sample::SampleDataType         
-out             OutPort     Sample::SampleDataType         
+sampleinterface ServicePort Sample::SampleInterface        
 =============== =========== ============================== =======
 
 Examples

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <rtc:RtcProfile rtc:version="0.2" rtc:id="RTC:VenderName:Category:testOriginalServicejava:1.0.0" xmlns:rtc="http://www.openrtp.org/namespaces/rtc" xmlns:rtcExt="http://www.openrtp.org/namespaces/rtc_ext" xmlns:rtcDoc="http://www.openrtp.org/namespaces/rtc_doc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="testOriginalServicejava" rtc:updateDate="2019-09-19T15:49:30+09:00" rtc:creationDate="2019-09-18T16:03:59+09:00" rtc:version="1.0.0" rtc:vendor="VenderName" rtc:maxInstances="1" rtc:executionType="PeriodicExecutionContext" rtc:executionRate="1000.0" rtc:description="ModuleDescription" rtc:category="Category" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="STATIC" rtc:name="testOriginalServicejava"/>
+    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="testOriginalServicejava" rtc:updateDate="2019-09-19T15:54:08+09:00" rtc:creationDate="2019-09-18T16:05:18+09:00" rtc:version="1.0.0" rtc:vendor="VenderName" rtc:maxInstances="1" rtc:executionType="PeriodicExecutionContext" rtc:executionRate="1000.0" rtc:description="ModuleDescription" rtc:category="Category" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="STATIC" rtc:name="testOriginalServicejava"/>
     <rtc:Actions>
         <rtc:OnInitialize xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
         <rtc:OnFinalize xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
@@ -17,7 +17,8 @@
         <rtc:OnAction xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
         <rtc:OnModeChanged xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
     </rtc:Actions>
-    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Users\TyouK\AppData\Roaming\.openrtp\idl\test.idl" rtc:type="Sample::SampleDataType" rtc:name="in" rtc:portType="DataInPort"/>
-    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Users\TyouK\AppData\Roaming\.openrtp\idl\test.idl" rtc:type="Sample::SampleDataType" rtc:name="out" rtc:portType="DataOutPort"/>
+    <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="LEFT" rtc:name="service">
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="C:\Users\TyouK\workspace2\testOriginalService\idl" rtc:type="Sample::SampleInterface" rtc:idlFile="C:\Users\TyouK\workspace2\testOriginalService\idl\testService.idl" rtc:instanceName="" rtc:direction="Provided" rtc:name="sampleinterface"/>
+    </rtc:ServicePorts>
     <rtc:Language xsi:type="rtcExt:language_ext" rtc:kind="Java"/>
 </rtc:RtcProfile>
