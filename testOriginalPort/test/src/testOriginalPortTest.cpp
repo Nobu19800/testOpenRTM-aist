@@ -11,7 +11,7 @@
 
 // Module specification
 // <rtc-template block="module_spec">
-static const char* testoriginalport_spec[] =
+static const char* const testoriginalport_spec[] =
   {
     "implementation_id", "testOriginalPortTest",
     "type_name",         "testOriginalPortTest",
